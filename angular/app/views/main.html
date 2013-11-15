@@ -1,0 +1,33 @@
+<div class="header">
+	<ul class="nav nav-pills pull-right">
+		<li class="active"><a href="#">Home</a></li>
+		<li><a href="#about">About</a></li>
+		<li><a href="#">Contact</a></li>
+	</ul>
+	<h3 class="text-muted">angular</h3>
+</div>
+
+<div ng-controller="appController">
+	<h1 ng-click="editTitle($event)" ng-model="title" ng-hide="editing">{{title}}</h1>
+	<input type="text" ng-model="title" ng-hide="!editing" ng-blur="editTitle($event)" /><br>
+	<ul id="users-list">
+		<li ng-repeat="user in users | orderBy:'name':false">
+			<label ng-hide="user.editing" ng-model="user.name">{{user.name}}</label>
+			<input type="text" ng-model="user.name" ng-hide="!user.editing"/>
+			<ul ng-model="user.email">
+				<li>{{user.email}}</li>
+				<li>
+					<button ng-click="editUser()">{{user.editing | edit_save }}</button>
+					<button ng-click="deleteUser()">delete</button></li>
+			</ul>
+		</li>
+	</ul>
+	
+	<input type="text" value="user name" ng-model="currentName"/>
+	<input type="text" value="bam@junge.de" ng-model="currentEmail" /><br>
+	<button ng-click="createUser()">Create</button>
+</div>
+
+<div class="footer">
+	<p>♥ from the Yeoman team</p>
+</div>

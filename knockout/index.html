@@ -1,0 +1,75 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Knockout App</title>
+		<script data-main="app/config" src="bower_components/requirejs/require.js"></script>
+		<script data-main="app/config" src="app/config.js"></script>
+	</head>
+	<body>
+		<script>
+
+			require(['jquery', 'ko'], function($, ko) {
+				$(function() {
+					//knockout application
+
+					/* ************ Model ************** */
+					var AppModel = function(users) {
+						var self = this;
+						self.title = ko.observable('Initial Title');
+						self.currentUserName = ko.observable();
+						self.currentUserEmail = ko.observable();
+						self.users = ko.observableArray(ko.utils.arrayMap(users, function(user) {
+							return new User(user.title, user.completed);
+						}));
+						self.createUser = function() {
+							var user = new User();
+							self.users.push(new User(self.currentUserName(), self.currentUserEmail()));
+						};
+						self.deleteUser = function() {
+							self.users.remove(this)
+						};
+					};
+
+					var User = function(name, email, editing) {
+						var self = this;
+						self.name = ko.observable(name);
+						self.email = ko.observable(email);
+						self.editing = ko.observable(false);
+						self.edit = function(){
+							self.editing(!self.editing());
+							console.log(this);
+						};
+					};
+
+					/* *********** run App ************* */
+					var users = [];
+					ko.applyBindings(new AppModel(users));
+				});
+			})
+
+
+
+		</script>
+		<div id="app">
+			<h1 data-bind="text: title">Title</h1>
+			<ul id="users-list" data-bind="foreach : users">
+				<li>
+					<label data-bind="text : name, visible : !editing()">name</label>
+					<input type="text" data-bind="value : name, visible : editing()"/>
+					<ul>
+						<li data-bind="text : email">mail</li>
+						<li>
+							<button id="btn_edit" data-bind="event : {click : edit} ">edit</button>
+							<button id="btn_delete" data-bind="event : {click : $parent.deleteUser}">delete</button>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<input type="text" data-bind="value : title" value="new app title"/><br>
+			<input id="name" type="text" value="user name" data-bind="value : currentUserName"/>
+			<input id="email" type="text" value="bam@junge.de" data-bind="value : currentUserEmail"/><br>
+			<button id="btn_create" data-bind="event : {'click' : createUser}">Create</button>
+		</div>
+	</body>
+</html>

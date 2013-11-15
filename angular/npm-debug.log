@@ -1,0 +1,61 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'conntect' ]
+2 info using npm@1.3.11
+3 info using node@v0.10.20
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 warn package.json angular@0.0.0 No description
+6 warn package.json angular@0.0.0 No repository field.
+7 warn package.json angular@0.0.0 No README data
+8 verbose readDependencies using package.json deps
+9 verbose cache add [ 'conntect', null ]
+10 verbose cache add name=undefined spec="conntect" args=["conntect",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'conntect',
+11 verbose parsed url   path: 'conntect',
+11 verbose parsed url   href: 'conntect' }
+12 silly lockFile 78632159-conntect conntect
+13 verbose lock conntect C:\Users\weiz001\AppData\Roaming\npm-cache\78632159-conntect.lock
+14 silly lockFile 78632159-conntect conntect
+15 silly lockFile 78632159-conntect conntect
+16 verbose addNamed [ 'conntect', '' ]
+17 verbose addNamed [ null, '*' ]
+18 silly lockFile 3fa8427f-conntect conntect@
+19 verbose lock conntect@ C:\Users\weiz001\AppData\Roaming\npm-cache\3fa8427f-conntect.lock
+20 silly addNameRange { name: 'conntect', range: '*', hasData: false }
+21 verbose url raw conntect
+22 verbose url resolving [ 'https://registry.npmjs.org/', './conntect' ]
+23 verbose url resolved https://registry.npmjs.org/conntect
+24 info trying registry request attempt 1 at 16:53:42
+25 http GET https://registry.npmjs.org/conntect
+26 http 404 https://registry.npmjs.org/conntect
+27 silly registry.get cb [ 404,
+27 silly registry.get   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+27 silly registry.get     date: 'Thu, 14 Nov 2013 15:53:43 GMT',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'content-length': '52',
+27 silly registry.get     'cache-control': 'must-revalidate' } ]
+28 silly lockFile 3fa8427f-conntect conntect@
+29 silly lockFile 3fa8427f-conntect conntect@
+30 error 404 'conntect' is not in the npm registry.
+30 error 404 You should bug the author to publish it
+30 error 404
+30 error 404 Note that you can also install from a
+30 error 404 tarball, folder, or http url, or git url.
+31 error System Windows_NT 6.1.7601
+32 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "conntect"
+33 error cwd C:\_gitstuff\angular
+34 error node -v v0.10.20
+35 error npm -v 1.3.11
+36 error code E404
+37 verbose exit [ 1, true ]
