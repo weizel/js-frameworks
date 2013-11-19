@@ -1,32 +1,36 @@
 'use strict';
-
-var routes = function($routeProvider) {
-	$routeProvider
-		.when('/', {
-			templateUrl: 'views/main.html',
-			controller: 'MainCtrl'
-		})
-		.when('/about', {
-			templateUrl : 'views/about.html',
-			controller : 'appController'
-		})
-		.otherwise({
-			redirectTo: '/'
-		});
-};
-
-var filterEditSave = function(){
-	return function(editing){
-		return editing ? 'Save' : 'Edit'
-	};
-};
-
-angular.module('testApp', [
+var appModule = angular.module('appModule', [
 	'ngCookies',
 	'ngResource',
 	'ngSanitize',
 	'ngRoute',
 	'ui.bootstrap',
-	'testAppFilters'
-]).config(routes);
-angular.module('testAppFilters', []).filter('edit_save', filterEditSave);
+	'filterModule'
+]);
+var filterModule = angular.module('filterModule', []);
+
+appModule
+	.config(function ($routeProvider) {
+		$routeProvider
+			.when('/', {
+				templateUrl: 'views/main.html',
+				controller: 'appController'
+			})
+			.when('/about', {
+				templateUrl: 'views/about.html',
+				controller: 'appController'
+			})
+			.otherwise({
+				redirectTo: '/'
+			});
+	})
+
+filterModule
+	.filter('edit_save', function () {
+		return function (editing) {
+			return editing ? 'Save' : 'Edit'
+		};
+	})
+
+
+/* ******************** Services ************************** */
