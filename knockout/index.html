@@ -5,51 +5,9 @@
 		<title>Knockout App</title>
 		<script data-main="app/config" src="bower_components/requirejs/require.js"></script>
 		<script data-main="app/config" src="app/config.js"></script>
+        <script src="app/main.js"></script>
 	</head>
 	<body>
-		<script>
-
-			require(['jquery', 'ko'], function($, ko) {
-				$(function() {
-					//knockout application
-
-					/* ************ ViewModel ************** */
-					var AppModel = function(users) {
-						var self = this;
-						self.title = ko.observable('Initial Title');
-						self.currentUserName = ko.observable();
-						self.currentUserEmail = ko.observable();
-						self.users = ko.observableArray(ko.utils.arrayMap(users, function(user) {
-							return new User(user.title, user.completed);
-						}));
-						self.createUser = function() {
-							self.users.push(new User(self.currentUserName(), self.currentUserEmail()));
-						};
-						self.deleteUser = function() {
-							self.users.remove(this)
-						};
-					};
-
-					var User = function(name, email, editing) {
-						var self = this;
-						self.name = ko.observable(name);
-						self.email = ko.observable(email);
-						self.editing = ko.observable(false);
-						self.edit = function(){
-							self.editing(!self.editing());
-							console.log(this);
-						};
-					};
-
-					/* *********** run App ************* */
-					var users = [];
-					ko.applyBindings(new AppModel(users));
-				});
-			})
-
-
-
-		</script>
 		<div id="app">
 			<h1 data-bind="text: title">Title</h1>
 			<ul id="users-list" data-bind="foreach : users">
