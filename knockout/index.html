@@ -23,7 +23,6 @@
 							return new User(user.title, user.completed);
 						}));
 						self.createUser = function() {
-							var user = new User();
 							self.users.push(new User(self.currentUserName(), self.currentUserEmail()));
 						};
 						self.deleteUser = function() {

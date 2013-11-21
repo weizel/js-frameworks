@@ -7,7 +7,7 @@ var appModule = angular.module('appModule', [
 	'ui.bootstrap',
 	'filterModule'
 ]);
-var filterModule = angular.module('filterModule', []);
+
 
 appModule
 	.config(function ($routeProvider) {
@@ -23,14 +23,4 @@ appModule
 			.otherwise({
 				redirectTo: '/'
 			});
-	})
-
-filterModule
-	.filter('edit_save', function () {
-		return function (editing) {
-			return editing ? 'Save' : 'Edit'
-		};
-	})
-
-
-/* ******************** Services ************************** */
+	});
